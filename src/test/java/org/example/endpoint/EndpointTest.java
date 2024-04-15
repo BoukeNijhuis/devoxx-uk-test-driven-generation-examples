@@ -18,7 +18,7 @@ public class EndpointTest {
     private TestRestTemplate restTemplate;
 
     @Test
-    public void greetingShouldReturnDefaultMessage() throws Exception {
+    public void checkForHelloWorld() throws Exception {
         String result = this.restTemplate.getForObject("http://localhost:" + port + "/",
                 String.class);
         assertEquals("Hello, World", result);
