@@ -9,7 +9,7 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class EndpointByeTest {
+public class EndpointAgeTest {
 
     @LocalServerPort
     private int port;
@@ -18,10 +18,16 @@ public class EndpointByeTest {
     private TestRestTemplate restTemplate;
 
     @Test
-    public void greetingShouldReturnDefaultMessage() throws Exception {
-        String result = this.restTemplate.getForObject("http://localhost:" + port + "/bye",
+    public void testEndpoint() throws Exception {
+        testAgeEndpoint("2024-01-01", 0);
+        testAgeEndpoint("2020-01-01", 4);
+        testAgeEndpoint("2000-01-01", 24);
+    }
+
+    public void testAgeEndpoint(String birthDate, int age) throws Exception {
+        String result = this.restTemplate.getForObject("http://localhost:" + port + "/age/" + birthDate,
                 String.class);
-        assertEquals("Bye, World", result);
+        assertEquals(String.valueOf(age), result);
     }
 
 }
