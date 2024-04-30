@@ -22,6 +22,7 @@ public class EndpointAgeTest {
         testAgeEndpoint("2024-01-01", 0);
         testAgeEndpoint("2020-01-01", 4);
         testAgeEndpoint("2000-01-01", 24);
+        testAgeEndpoint("2000-12-31", 23);
     }
 
     public void testAgeEndpoint(String birthDate, int age) throws Exception {
