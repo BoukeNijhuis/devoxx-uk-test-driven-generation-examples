@@ -17,6 +17,7 @@ public class EndpointAgeTest {
     @Autowired
     private TestRestTemplate restTemplate;
 
+    // This test will only work in 2024!
     @Test
     public void testEndpoint() throws Exception {
         testAgeEndpoint("2024-01-01", 0);
